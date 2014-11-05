@@ -1,4 +1,4 @@
 Scrabble
 ========
 
-Some of the projects I have worked on in and out of school
+A scrabble game i'm working on.
