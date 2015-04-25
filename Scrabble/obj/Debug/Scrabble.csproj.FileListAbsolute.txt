@@ -1,0 +1,24 @@
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\bin\Debug\SOWPODS (Europe Scrabble Word List).txt
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\bin\Debug\Scrabble.exe.config
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\bin\Debug\Scrabble.exe
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\bin\Debug\Scrabble.pdb
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\obj\Debug\Scrabble.Board.resources
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\obj\Debug\Scrabble.Form1.resources
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\obj\Debug\Scrabble.ModalWord.resources
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\obj\Debug\Scrabble.Properties.Resources.resources
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\obj\Debug\Scrabble.csproj.GenerateResource.Cache
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\obj\Debug\Scrabble.exe
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\obj\Debug\Scrabble.pdb
+C:\Users\Steve\Desktop\Scrabble\Scrabble\Scrabble\obj\Debug\Scrabble.csprojResolveAssemblyReference.cache
+C:\Users\Steve\Documents\Scrabble\Scrabble\bin\Debug\SOWPODS (Europe Scrabble Word List).txt
+C:\Users\Steve\Documents\Scrabble\Scrabble\bin\Debug\Scrabble.exe.config
+C:\Users\Steve\Documents\Scrabble\Scrabble\bin\Debug\Scrabble.exe
+C:\Users\Steve\Documents\Scrabble\Scrabble\bin\Debug\Scrabble.pdb
+C:\Users\Steve\Documents\Scrabble\Scrabble\obj\Debug\Scrabble.Board.resources
+C:\Users\Steve\Documents\Scrabble\Scrabble\obj\Debug\Scrabble.Form1.resources
+C:\Users\Steve\Documents\Scrabble\Scrabble\obj\Debug\Scrabble.ModalWord.resources
+C:\Users\Steve\Documents\Scrabble\Scrabble\obj\Debug\Scrabble.Properties.Resources.resources
+C:\Users\Steve\Documents\Scrabble\Scrabble\obj\Debug\Scrabble.csproj.GenerateResource.Cache
+C:\Users\Steve\Documents\Scrabble\Scrabble\obj\Debug\Scrabble.exe
+C:\Users\Steve\Documents\Scrabble\Scrabble\obj\Debug\Scrabble.pdb
+C:\Users\Steve\Documents\Scrabble\Scrabble\obj\Debug\Scrabble.csprojResolveAssemblyReference.cache
