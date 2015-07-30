@@ -8,87 +8,58 @@ namespace Scrabble
 {
     public class Player
     {
-        private bool isTurn;
-        private int score;
-        private char[] letters;
-        private int numberOfLetters;
         private int id;
         private static int numberOfPlayers = 0;
         private static Letter[] allLetters = new Letter[27];
-        private Square[] boardPieces;
-        private int gamePieceNumber;
+        private GamePiece[] boardPieces;
         private static readonly Random random = new Random();
         private static readonly object syncLock = new object();
-        
+
         private static int RandomNumber(int min, int max)
         {
             lock (syncLock)
-            { 
+            {
                 return random.Next(min, max);
             }
         }
 
-        public int GamePieceNumber
-        {
-            get { return gamePieceNumber; }
-            set { gamePieceNumber = value; }
-        }
-
-        public bool IsTurn
-        {
-            get { return isTurn; }
-            set { isTurn = value; }
-        }
+        public int GamePieceNumber { get; set; }
+        public bool IsTurn { get; set; }
+        public int Score { get; set; }
+        public char[] Letters { get; set; }
+        public int NumberOfLetters { get; set; }
+        public int Id { get; private set; }
 
         public static Letter[] AllLetters
         {
             get { return Player.allLetters; }
         }
 
-        public int Score
+        public void setGamePieces(GamePiece gamePiece)
         {
-            get { return score; }
-            set { score = value; }
+            boardPieces[GamePieceNumber] = gamePiece;
+            GamePieceNumber++;
         }
 
-        public char[] Letters
+        public void updateGamePieces()
         {
-            get { return letters; }
-            set { letters = value; }
-        }
-
-        public int NumberOfLetters
-        {
-            get { return numberOfLetters; }
-            set { numberOfLetters = value; }
-        }
-
-        public int Id
-        {
-            get { return id; }
-        }
-
-
-        public void setGamePieces(Square gamePiece) {
-            boardPieces[gamePieceNumber] = gamePiece;
-            gamePieceNumber++;
-        }
-
-        public void updateGamePieces() {
-            List<Square> newBoardPieces = new List<Square>();
-            foreach (Square square in boardPieces) {
-                if (square.IsSelectable) {
+            List<GamePiece> newBoardPieces = new List<GamePiece>();
+            foreach (GamePiece square in boardPieces)
+            {
+                if (square.IsSelectable)
+                {
                     newBoardPieces.Add(square);
                 }
             }
-            boardPieces = new Square[7];
+            boardPieces = new GamePiece[7];
             GamePieceNumber = 0;
-            foreach (Square square in newBoardPieces) {
+            foreach (GamePiece square in newBoardPieces)
+            {
                 setGamePieces(square);
             }
         }
 
-        public Square[] getGamePieces()
+        public GamePiece[] getGamePieces()
         {
             return boardPieces;
         }
@@ -98,8 +69,8 @@ namespace Scrabble
             Score = score;
             Letters = letters;
             NumberOfLetters = numberOfLetters;
-            id = numberOfPlayers++;
-            boardPieces = new Square[7];
+            Id = numberOfPlayers++;
+            boardPieces = new GamePiece[7];
             IsTurn = false;
         }
 
@@ -140,47 +111,36 @@ namespace Scrabble
         /// <param name="tilesNeeded"></param>
         /// <returns></returns>
         //public Letter[] GenerateLetters(int tilesNeeded)
-        public char[] GenerateLetters(int tilesNeeded)
+        public char[] ChooseLetters(int tilesNeeded)
         {
-            //Random random = new Random();
-            //Letter[] letters = new Letter[tilesNeeded];
-            int tilesChosen = 0;
+            int numberOfTilesPlayerChose = 0;
             char[] tiles = new char[tilesNeeded];
-            int numberOfTiles = allLetters.Sum(freq => freq.Value);
-            if ((tilesNeeded > 0) && (tilesNeeded <= 7))
+            int numberOfTilesRemaining = allLetters.Sum(freq => freq.FrequencyOfLetter);
+            if (ValidLetter(tilesNeeded, numberOfTilesRemaining))
             {
-                if (numberOfTiles > 0)
+                while (tilesNeeded > 0)
                 {
-                    while (tilesNeeded > 0)
+                    int number = RandomNumber(0, 27);
+                    char letter = allLetters[number].AlphabeticalCharacter;
+                    int frequency = allLetters[number].FrequencyOfLetter;
+                    if (frequency >= 1)
                     {
-                        //int number = random.Next(0, 27);
-                        int number = RandomNumber(0, 27);
-                        char letter = allLetters[number].Character;
-                        int frequency = allLetters[number].Frequency;
-                        //check if letter is available
-                        if (frequency >= 1)
-                        {
-                            tiles[tilesChosen] = letter;
-                            allLetters[number].Frequency = allLetters[number].Frequency - 1;
-                            tilesNeeded--;
-                            tilesChosen++;
-                            numberOfTiles = allLetters.Sum(x => x.Frequency);
-                        }
-
-
-                        //else if (frequency == 0)
-                        //{
-                        //    Console.WriteLine(letter + " Last Character!");
-                        //}
-                        //else
-                        //{
-                        //    Console.WriteLine(letter + " Not a valid character!");
-                        //}
+                        tiles[numberOfTilesPlayerChose] = letter;
+                        allLetters[number].FrequencyOfLetter = allLetters[number].FrequencyOfLetter - 1;
+                        tilesNeeded--;
+                        numberOfTilesPlayerChose++;
+                        numberOfTilesRemaining = allLetters.Sum(x => x.FrequencyOfLetter);
                     }
-
                 }
             }
+
+
             return tiles;
+        }
+
+        private bool ValidLetter(int tilesRequired, int allTilesRemaining)
+        {
+            return (tilesRequired > 0) && (tilesRequired <= 7) && (allTilesRemaining > 0);
         }
     }
 }

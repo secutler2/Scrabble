@@ -8,43 +8,24 @@ namespace Scrabble
 {
     public class Letter
     {
-        private char letter;
-        private int value;
-        private int frequency;
 
-        public char Character
-        {
-            get { return letter; }
-            set { letter = value; }
-        }
-
-        public int Value
-        {
-            get { return this.value; }
-            set { this.value = value; }
-        }
-
-        public int Frequency
-        {
-            get { return frequency; }
-            set { frequency = value; }
-        }
+        public char AlphabeticalCharacter { get; set; }
+        public int FrequencyOfLetter { get; set; }
+        public int ValueOfLetter { get; set; }
 
         public Letter(char letter, int value, int frequency)
         {
-            if (frequency >= 0)
+            bool validFrequency = frequency >= 0;
+            if (validFrequency)
             {
-                Character = letter;
-                Value = value;
-                Frequency = frequency;
-            }
-            else {
-                Console.WriteLine("Out of " + letter);
+                AlphabeticalCharacter = letter;
+                ValueOfLetter = value;
+                FrequencyOfLetter = frequency;
             }
         }
 
         private void decrementFrequency(int frequency) {
-            Frequency = frequency - 1;
+            FrequencyOfLetter = frequency - 1;
         }
     }
 }
